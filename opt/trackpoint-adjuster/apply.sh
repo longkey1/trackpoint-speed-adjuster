@@ -10,7 +10,7 @@ for i in $(seq 0 59)
 do
   echo "$(/usr/bin/date) ${XAUTHORITY} ${HOME} ${i}" >> /tmp/trackpoint-adjuster.log
   if /usr/bin/xinput list | /usr/bin/grep -q "${DEVICE_NAME}"; then
-    /usr/bin/xinput --set-prop "pointer:${DEVICE_NAME}" "libinput Accel Speed" 1.0
+    /usr/bin/xinput --set-prop "pointer:${DEVICE_NAME}" "libinput Accel Speed" ${TRACKPOINT_ADJUSTER_SPEED}
     break
   fi
   sleep 1

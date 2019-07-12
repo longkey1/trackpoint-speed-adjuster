@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := help
+export TRACKPOINT_ADJUSTER_SPEED := 1.0
 
 define _executable
 	@if ! type $(1) &> /dev/null; then \
@@ -10,6 +11,7 @@ endef
 .PHONY: install
 install:  _requires ## setup files
 	cp -r ./opt/trackpoint-adjuster /opt/ && chmod +x /opt/trackpoint-adjuster/*.sh
+	envsubst '$$TRACKPOINT_ADJUSTER_SPEED' < ./opt/trackpoint-adjuster/apply.sh > /opt/trackpoint-adjuster/apply.sh
 	cp ./etc/udev/rules.d/50-trackpoint-adjuster.rules /etc/udev/rules.d/50-trackpoint-adjuster.rules
 
 .PHONY: uninstall
@@ -22,6 +24,7 @@ _requires:
 	@$(call _executable,"/usr/bin/at")
 	@$(call _executable,"/usr/bin/parallel")
 	@$(call _executable,"/usr/bin/xinput")
+	@$(call _executable,"envsubst")
 
 
 
