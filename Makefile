@@ -21,9 +21,8 @@ uninstall: ## delete installed files
 
 .PHONY: _requires
 _requires:
-	@$(call _executable,"/usr/bin/at")
-	@$(call _executable,"/usr/bin/parallel")
-	@$(call _executable,"/usr/bin/xinput")
+	@$(call _executable,"parallel")
+	@$(call _executable,"xinput")
 	@$(call _executable,"envsubst")
 
 
