@@ -1,1 +1,2 @@
 ACTION=="add", KERNEL=="input[0-9]*", SUBSYSTEM=="input", ATTR{name}=="ThinkPad Compact Bluetooth Keyboard with TrackPoint", RUN+="/opt/trackpoint-adjuster/trackpoint-adjuster.sh"
+ACTION=="add", SUBSYSTEM=="usb", DRIVER=="usb", ATTR{name}=="ThinkPad Compact USB Keyboard with TrackPoint", RUN+="/opt/trackpoint-adjuster/trackpoint-adjuster.sh"
